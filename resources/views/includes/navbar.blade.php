@@ -10,7 +10,7 @@
         <a class="nav-link" href="{{ route('todos.index') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('todos.create') }}">+ TODO</a>
+        <a class="nav-link" href="{{ route('todos.create') }}">Create New Todo</a>
       </li>
     </ul>
   </div>

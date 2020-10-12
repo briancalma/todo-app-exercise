@@ -14,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::get();
+        $todos = Todo::orderBy('id', 'desc')->get();
 
         return view('todos.index')->with(compact('todos'));
     }
@@ -26,7 +26,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Todo::create($request->all());
+
+        return redirect(route('todos.index'));
     }
 
     /**
@@ -48,7 +50,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return view('todos.show')->with(compact('todo'));
     }
 
     /**
@@ -59,7 +61,7 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        //
+       return view('todos.edit')->with(compact('todo'));
     }
 
     /**
@@ -71,7 +73,9 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        $todo->update($request->all());
+
+        return redirect(route('todos.index'));
     }
 
     /**
