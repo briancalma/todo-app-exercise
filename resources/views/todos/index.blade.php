@@ -10,7 +10,12 @@
 		    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
 		    <p class="card-text">{{ $todo->description }}</p>
 		    <a href="{{ route('todos.edit', $todo) }}" class="card-link">Edit</a>
-		    <a href="#" class="card-link text-danger">Delete</a> 
+
+		    <form style="display: inline;" action="{{ route('todos.destroy', $todo) }}" method="POST" class="ml-4">
+		    	@method('DELETE')
+		    	@csrf
+		    	<a href="javascript::void(0)" class="card-link text-danger" onclick="deleteTodo(this)">Delete</a> 
+		    </form>
 		  </div>
 		</div>
 	@endforeach
